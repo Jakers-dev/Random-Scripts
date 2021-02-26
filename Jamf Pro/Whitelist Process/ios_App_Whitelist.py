@@ -199,16 +199,17 @@ def main():
 	
 	
 	AppleApps = [u'com.apple.AppStore', u'com.apple.store.Jolly', u'com.apple.iBooks', u'com.apple.calculator', u'com.apple.mobilecal', u'com.apple.camera', u'com.apple.clips', u'com.apple.mobiletimer', u'com.apple.compass', u'com.apple.MobileAddressBook', u'com.apple.facetime', u'com.apple.DocumentsApp', u'com.apple.findmy', u'com.apple.Fitness', u'com.apple.mobilegarageband', u'com.apple.Health', u'com.apple.Home', u'com.apple.iCloudDriveApp', u'com.apple.iMovie', u'com.apple.MobileStore', u'com.apple.Keynote', u'com.Apple.Magnifier', u'com.apple.mobilemail', u'com.apple.Maps', u'com.apple.measure', u'com.apple.MobileSMS', u'com.apple.Music', u'com.apple.Music', u'com.apple.mobilenotes', u'com.apple.Numbers', u'com.apple.Pages', u'com.apple.mobilephone', u'com.apple.Photo-Booth', u'com.apple.mobileslideshow', u'com.apple.podcasts', u'com.apple.reminders', u'com.apple.mobilesafari', u'com.apple.Preferences', u'com.apple.shortcuts', u'com.apple.stocks', u'com.apple.Playgrounds', u'com.apple.Translate', u'com.apple.tv', u'com.apple.VoiceMemos', u'com.apple.Passbook', u'com.apple.Bridge', u'com.apple.weather']
-
-	for appleapp in AppleApps:
-		for app in api_data['mobile_device_applications']:
-			if api_data['mobile_device_applications'] != appleapp:
-				restrictions['whitelistedAppBundleIDs'].append(appleapp)
-
-
-	appIDs = list(set(restrictions['whitelistedAppBundleIDs']))
 	
-	cph.add_restrictions_payload(restrictions)
+	for appleapp in AppleApps:
+		if (appleapp not in restrictions['whitelistedAppBundleIDs']):
+			restrictions['whitelistedAppBundleIDs'].append(appleapp)
+	
+	appIDs = list(set(restrictions['whitelistedAppBundleIDs']))
+	newrestrictions = dict()
+	newrestrictions['whitelistedAppBundleIDs'] = list(appIDs)
+	
+
+	cph.add_restrictions_payload(newrestrictions)
 
 	config_profile_xml = etree.Element("configuration_profile")
 	config_profile_general = etree.Element("general")
