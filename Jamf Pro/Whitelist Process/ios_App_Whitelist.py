@@ -26,12 +26,15 @@
 #       (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 #       SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-#   Author: Robert Haake
-#   Last Modified: 03/11/2016
-#   Version: 1.0 Beta 1
+#   Original Author: Robert Haake
+#   Current Author: Catalytic IT
+#   Last Modified: 08/03/2021
+#   Version: 2
 #
 #   Description:  This script will generate a profile that contains an app usage restriction with
 #   only app catalog apps
+#   Additions to original script has been updated to remove duplicates
+#   Additions to Add Apple iOS apps from https://support.apple.com/en-au/guide/mdm/mdm90f60c1ce/web
 #
 #   Enter JSS URL as https://yourjssurl.com:8443
 #
@@ -198,7 +201,7 @@ def main():
 
 	
 	
-	AppleApps = [u'com.apple.AppStore', u'com.apple.store.Jolly', u'com.apple.iBooks', u'com.apple.calculator', u'com.apple.mobilecal', u'com.apple.camera', u'com.apple.clips', u'com.apple.mobiletimer', u'com.apple.compass', u'com.apple.MobileAddressBook', u'com.apple.facetime', u'com.apple.DocumentsApp', u'com.apple.findmy', u'com.apple.Fitness', u'com.apple.mobilegarageband', u'com.apple.Health', u'com.apple.Home', u'com.apple.iCloudDriveApp', u'com.apple.iMovie', u'com.apple.MobileStore', u'com.apple.Keynote', u'com.Apple.Magnifier', u'com.apple.mobilemail', u'com.apple.Maps', u'com.apple.measure', u'com.apple.MobileSMS', u'com.apple.Music', u'com.apple.Music', u'com.apple.mobilenotes', u'com.apple.Numbers', u'com.apple.Pages', u'com.apple.mobilephone', u'com.apple.Photo-Booth', u'com.apple.mobileslideshow', u'com.apple.podcasts', u'com.apple.reminders', u'com.apple.mobilesafari', u'com.apple.Preferences', u'com.apple.shortcuts', u'com.apple.stocks', u'com.apple.Playgrounds', u'com.apple.Translate', u'com.apple.tv', u'com.apple.VoiceMemos', u'com.apple.Passbook', u'com.apple.Bridge', u'com.apple.weather']
+	AppleApps = [u'com.apple.iBooks', u'com.apple.calculator', u'com.apple.camera', u'com.apple.clips', u'com.apple.mobiletimer', u'com.apple.compass', u'com.apple.DocumentsApp', u'com.apple.findmy', u'com.apple.mobilegarageband', u'com.apple.iCloudDriveApp', u'com.apple.iMovie', u'com.apple.Keynote', u'com.Apple.Magnifier', u'com.apple.measure', u'com.apple.mobilenotes', u'com.apple.Numbers', u'com.apple.Pages', u'com.apple.mobileslideshow', u'com.apple.mobilesafari', u'com.apple.Preferences', u'com.apple.shortcuts', u'com.apple.Playgrounds', u'com.apple.Translate', u'com.apple.VoiceMemos', u'com.apple.weather', u'com.apple.webapp']
 	
 	for appleapp in AppleApps:
 		if (appleapp not in restrictions['whitelistedAppBundleIDs']):
